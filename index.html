@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>QR Code Generator</h1>
+        <p class="subtitle">Create a QR code for any website with custom colors and size.</p>
+      </header>
+
+      <section class="panel">
+        <form id="qrForm" class="form" autocomplete="on">
+          <div class="form-row">
+            <label for="urlInput">Website URL</label>
+            <input id="urlInput" name="url" type="url" required placeholder="https://example.com" />
+          </div>
+
+          <div class="form-row cols-2">
+            <div>
+              <label for="fgColor">QR color</label>
+              <input id="fgColor" name="fg" type="color" value="#000000" />
+            </div>
+            <div>
+              <label for="sizeRange">Size (px)</label>
+              <div class="size-group">
+                <input id="sizeRange" type="range" min="128" max="1024" step="32" value="256" />
+                <input id="sizeNumber" type="number" min="64" max="2048" step="16" value="256" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row cols-2 align-center">
+            <div class="checkbox-row">
+              <input id="bgToggle" type="checkbox" />
+              <label for="bgToggle">Add background</label>
+            </div>
+            <div class="bg-picker">
+              <label for="bgColor">Background color</label>
+              <input id="bgColor" type="color" value="#ffffff" disabled />
+            </div>
+          </div>
+
+          <div id="message" class="message" role="status" aria-live="polite"></div>
+
+          <div class="actions">
+            <button id="generateBtn" type="submit" class="btn primary">Generate</button>
+            <a id="downloadBtn" class="btn" href="#" download="qrcode.png" aria-disabled="true">Download PNG</a>
+            <button id="clearBtn" type="button" class="btn ghost">Clear</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel-title">Preview</h2>
+        <div id="qrcode" class="qrcode" aria-label="QR code preview"></div>
+      </section>
+    </main>
+
+  <!-- QRCode.js (MIT). Using defer and no SRI to avoid load blocking. -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script defer src="./script.js"></script>
+  </body>
+</html>
