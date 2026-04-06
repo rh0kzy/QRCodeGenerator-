@@ -45,11 +45,35 @@
             </div>
           </div>
 
+          <div class="form-row cols-2">
+            <div>
+              <label for="logoInput">Add Logo in Middle (Optional)</label>
+              <input id="logoInput" type="file" accept="image/*" />
+            </div>
+            <div>
+              <label for="logoSizeRange">Logo Size (%)</label>
+              <div class="size-group">
+                <input id="logoSizeRange" type="range" min="10" max="40" step="1" value="22" />
+                <span id="logoSizeText">22%</span>
+              </div>
+            </div>
+            <div>
+              <label for="logoGapRange">Border/Gap (%)</label>
+              <div class="size-group">
+                <input id="logoGapRange" type="range" min="0" max="100" step="1" value="30" />
+                <span id="logoGapText">30%</span>
+              </div>
+            </div>
+          </div>
+
           <div id="message" class="message" role="status" aria-live="polite"></div>
 
           <div class="actions">
             <button id="generateBtn" type="submit" class="btn primary">Generate</button>
-            <a id="downloadBtn" class="btn" href="#" download="qrcode.png" aria-disabled="true">Download PNG</a>
+            <div class="download-group">
+              <a id="downloadBtn" class="btn" href="#" download="qrcode.png" aria-disabled="true">Download PNG</a>
+              <button id="downloadPdfBtn" type="button" class="btn" aria-disabled="true">Download PDF</button>
+            </div>
             <button id="clearBtn" type="button" class="btn ghost">Clear</button>
           </div>
         </form>
@@ -63,6 +87,8 @@
 
   <!-- QRCode.js (MIT). Using defer and no SRI to avoid load blocking. -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- jsPDF (MIT) for PDF generation -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script defer src="./script.js"></script>
   </body>
 </html>
